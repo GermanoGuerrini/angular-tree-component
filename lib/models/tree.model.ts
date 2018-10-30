@@ -363,7 +363,12 @@ export class TreeModel implements ITreeModel {
       to.parent.treeModel.update();
     }
 
-    this.fireEvent({ eventName: TREE_EVENTS.moveNode, node: originalNode, to: { parent: to.parent.data, index: toIndex } });
+    this.fireEvent({
+      eventName: TREE_EVENTS.moveNode,
+      node: originalNode,
+      to: { parent: to.parent.data, index: toIndex },
+      from: { parent: fromParent.data, index: fromIndex }
+    });
   }
 
   @action copyNode(node, to) {
